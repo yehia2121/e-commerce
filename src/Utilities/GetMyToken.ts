@@ -6,7 +6,7 @@ export default async function GetMyToken() {
   try {
     const encryptedToken =
       (await cookies()).get("next-auth.session-token")?.value ||
-      (await cookies()).get("__Securenext-auth.session-token")?.value;
+      (await cookies()).get("__Secure-next-auth.session-token")?.value;
 
     if (!encryptedToken) return null;
 
