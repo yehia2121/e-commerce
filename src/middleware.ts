@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
   const token = await getToken({
     req: request,
+    secret: process.env.NEXTAUTH_SECRET,
   });
 
   if (token) {
@@ -30,5 +31,12 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/cart"],
+  matcher: [
+    "/cart",
+    "/profile",
+    "/wishlist",
+    "/allorders",
+    "/login",
+    "/register",
+  ],
 };
