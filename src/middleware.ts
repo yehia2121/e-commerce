@@ -7,9 +7,25 @@ export async function middleware(request: NextRequest) {
   });
 
   if (token) {
-    return NextResponse.next();
+    if (
+      request.nextUrl.pathname == "/login" ||
+      request.nextUrl.pathname == "/register"
+    ) {
+      return NextResponse.redirect(new URL("/", request.url));
+    } else {
+      return NextResponse.next();
+    }
   } else {
-    return NextResponse.redirect(new URL("/login", request.url));
+    if (
+      request.nextUrl.pathname == "/cart" ||
+      request.nextUrl.pathname == "/profile" ||
+      request.nextUrl.pathname == "/wishlist" ||
+      request.nextUrl.pathname == "/allorders"
+    ) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    } else {
+      return NextResponse.next();
+    }
   }
 }
 

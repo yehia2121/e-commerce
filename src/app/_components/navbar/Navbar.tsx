@@ -87,8 +87,8 @@ export default function Navbar() {
                     <DropdownMenuItem>
                       <Link className="w-full cursor-pointer" href={`/cart`}>
                         Cart
-                        <DropdownMenuShortcut>{cartCount}</DropdownMenuShortcut>
                       </Link>
+                      <DropdownMenuShortcut>{cartCount}</DropdownMenuShortcut>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <div>
@@ -177,6 +177,9 @@ export default function Navbar() {
                 <DropdownMenuSeparator />
                 {status === "authenticated" ? (
                   <>
+                    <DropdownMenuItem>
+                      <Link href={"/profile"}>Profile</Link>
+                    </DropdownMenuItem>
                     <DropdownMenuItem>
                       <Link href={"/cart"}>Cart</Link>
                       <DropdownMenuShortcut>{cartCount}</DropdownMenuShortcut>
